@@ -1,436 +1,320 @@
 const Discord = require('discord.js');
-const Baron = new Discord.Client();
-const prefix = '$';
-Baron.on("ready", ()=>{
-Baron.user.setActivity('Baron#1500 Development', {type : 'watching'});
-console.log('Loding')
-setTimeout(() => {
-  console.log('Loding.')//Baron#1500
-}, 500)
-setTimeout(() => {
-  console.log('Loding..')//Baron#1500
-}, 1000)
-setTimeout(() => {
-  console.log('Loding...')//Baron#1500
-}, 1500)
-setTimeout(() => {
-  console.log(`Logged as ${Baron.user.tag}`)//Baron#1500
-}, 2000)
-})
-Baron.on("message", message =>{//Baron#1500
-//السطر ال تحت لمنع تكرار انشاء الرتب لو عاوز تغير اسم الرتب غيرها وحط اسمها فى السطر ال تحت كمان علشان ميحصلش سبام
-let roles = message.guild.roles.find(all=> all.name === "⇁『KiNG 』‏‏༄  ❥", "⇁『LEADER』‏‏༄  ❥", "⇁『BiG BOSS 』‏‏༄  ❥", "⇁『CAPTAIN 』‏‏༄  ❥", "⇁『SERGEANT 』‏‏༄  ❥",
-"⇁『youtuber 』‏‏༄  ❥", "⇁『ACTIVE 』‏‏༄  ❥");//Baron#1500
-if(message.content.startsWith(prefix + "roles")) {//Baron#1500
-  if(message.author.bot) return;//Baron#1500
-  if(roles) return message.reply('**الرتب موجوده بالفعل**')//Baron#1500
-  //دى بقا الرتب ال انت عاوزو يعملها 
-  let roleking = message.guild.roles.find(r => r.name === "⇁『KiNG 』‏‏༄  ❥");//Baron#1500
-  if(!roleking) {
-  message.guild.createRole({//Baron#1500
-  name: '⇁『KiNG 』‏‏༄  ❥',
-  color: 'RANDOM',
-  position: (1),
-  hoist: (true),
-  permissions: 'ADMINISTRATOR'
-})
+const client = new Discord.Client();
+var prefix = "$"
+var adminprefix = '$'
+
+
+//الاوامر الهيلب حق الميوزك
+
+client.on('message', message => {
+  if(message.content === prefix + "Music"){
+    var Music = client.emojis.find(emoji => emoji.name === "Music")
+    var music = client.emojis.find(emoji => emoji.name === "music")
+    var loading = client.emojis.find(emoji => emoji.name === "loading")
+    message.channel.send(`${Music}** | قائمة أوامر الميوزك.
+╔════════════════════════╗
+║${Music} | ${prefix}play => لكي تشغل أغنية تبغاها
+║${Music} | ${prefix}skip => لتجاوز معطع لا تبغاه
+║${Music} | ${prefix}stop => لإيقاف الأغنية
+║${Music} | ${prefix}vol => لتغيير مستوى الصوت
+║${Music} | ${prefix}np => لرؤية الأغنية الشغالة حالا
+║${Music} | ${prefix}replay => لإعادة تشغيل الأغنية
+║${Music} | ${prefix}queue => لرؤية رقم و إسم الأغنية الشغالة حاليا
+║${Music} | ${prefix}pause => لإقاف الأغنية الشغالة حاليا
+║${Music} | ${prefix}resume => لإستئناف الأغنية المختارة
+╚════════════════════════╝**`)
   }
-let roleleader = message.guild.roles.find(r => r.name === "⇁『LEADER』‏‏༄  ❥");//Baron#1500
-if(!roleleader) {
- message.guild.createRole({//Baron#1500
-    name: '⇁『LEADER』‏‏༄  ❥',//Baron#1500
-    color: 'RANDOM',
-    position: (2),//Baron#1500
-    hoist: (true),
-    permissions: ['CREATE_INSTANT_INVITE', 'KICK_MEMBERS', 'BAN_MEMBERS', 'MANAGE_CHANNELS', 'ADD_REACTIONS', 'VIEW_AUDIT_LOG', 'VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES',
-        'SEND_TTS_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS',
-         'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'MANAGE_NICKNAMES'],
-})
-}//Baron#1500
-let rolebigboss = message.guild.roles.find(r => r.name === "⇁『BiG BOSS 』‏‏༄  ❥");//Baron#1500
-if(!rolebigboss) {//Baron#1500
-  message.guild.createRole({
-    name: '⇁『BiG BOSS 』‏‏༄  ❥',
-    color: 'RANDOM',
-     position: (3),//Baron#1500
-     hoist: (true),
-    permissions: ['CREATE_INSTANT_INVITE', 'KICK_MEMBERS', 'ADD_REACTIONS', 'VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS',
-    'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'MANAGE_NICKNAMES']
-})
-}//Baron#1500
-let rolecaptain = message.guild.roles.find(r => r.name === "⇁『CAPTAIN 』‏‏༄  ❥");//Baron#1500
-if(!rolecaptain) {//Baron#1500
-message.guild.createRole({
-    name: '⇁『CAPTAIN 』‏‏༄  ❥',
-    color: 'RANDOM',
-    postion: (4),
-    hoist: (true),//Baron#1500
-    permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS',
-    'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME']
-})
-}
-let rolesergant = message.guild.roles.find(r => r.name === "⇁『SERGEANT 』‏‏༄  ❥");//Baron#1500
-if(!rolesergant) {
- message.guild.createRole({
-    name: '⇁『SERGEANT 』‏‏༄  ❥',
-    color: 'RANDOM',//Baron#1500
-    postion: (5),
-    hoist: (true),//Baron#1500
-    permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS',
-    'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME']
-})
-}//Baron#1500
-let roleyoutuber = message.guild.roles.find(r => r.name === "⇁『youtuber 』‏‏༄  ❥");
-if(!roleyoutuber) {//Baron#1500
-  message.guild.createRole({
-    name: '⇁『youtuber 』‏‏༄  ❥',
-    color: 'RANDOM',
-    postion: (6),
-    hoist: (true),//Baron#1500
-    permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
-    'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
-})
-}
-let roleactive = message.guild.roles.find(r => r.name === "⇁『ACTIVE 』‏‏༄  ❥");//Baron#1500
-if(!roleactive) {//Baron#1500
- message.guild.createRole({
-  name: '⇁『ACTIVE 』‏‏༄  ❥',
-  color: 'RANDOM',
-  postion: (7),
-  hoist: (true),//Baron#1500
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',//Baron#1500
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']//Baron#1500
-})
-message.guild.createRole({//Baron#1500
-  name: 'Fortnite',
-  color: 'RANDOM',//Baron#1500
-  postion: (7),
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',//Baron#1500
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']//Baron#1500
-})
-message.guild.createRole({//Baron#1500
-  name: 'playerunknowns',
-  color: 'RANDOM',
-  postion: (7),
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']//Baron#1500
-})//Baron#1500
-message.guild.createRole({
-  name: 'counter-strike',
-  color: 'RANDOM',//Baron#1500
-  postion: (7),
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
-})//Baron#1500
-message.guild.createRole({
-  name: 'creative-destruction',//Baron#1500
-  color: 'RANDOM',
-  postion: (7),
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
-})
-message.guild.createRole({//Baron#1500
-  name: 'overwatch',
-  color: 'RANDOM',
-  postion: (7),//Baron#1500
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
-})//Baron#1500
-message.guild.createRole({
-  name: 'minecraft',//Baron#1500
-  color: 'RANDOM',
-  postion: (7),//Baron#1500
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
-})//Baron#1500
-message.guild.createRole({//Baron#1500
-  name: 'league-of-legends',
-  color: 'RANDOM',//Baron#1500
-  postion: (7),
-  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
-  'READ_MESSAGE_HISTORY', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
-})//Baron#1500
-message.channel.send(message.member + '**جارى انشاء الرتب**').then((m)=> {
-  setTimeout(() => {//Baron#1500
-    m.edit('**تم انشاء الرتب بنجاح**')
-  }, 3000);//Baron#1500
-})
-}//Baron#1500
-}
-})//Baron#1500
-Baron.on("message", message =>{
-  let roleyoutuber = message.guild.roles.find(r => r.name === "⇁『youtuber 』‏‏༄  ❥");
-  let rolepubg = message.guild.roles.find(r => r.name === "playerunknowns");
-  let rolecsgo = message.guild.roles.find(r => r.name === "counter-strike");
-  let rolecd = message.guild.roles.find(r => r.name === "creative-destruction");
-  let roleow = message.guild.roles.find(r => r.name === "overwatch");
-  let rolemc = message.guild.roles.find(r => r.name === "minecraft");
-  let rolelol = message.guild.roles.find(r => r.name === "league-of-legends");
-  let rolefortnite = message.guild.roles.find(r => r.name === "Fortnite");
-//Baron#1500
-  let roles = message.guild.roles.find(all=> all.name === "⇁『KiNG 』‏‏༄  ❥", "⇁『LEADER』‏‏༄  ❥", "⇁『BiG BOSS 』‏‏༄  ❥", "⇁『CAPTAIN 』‏‏༄  ❥", "⇁『SERGEANT 』‏‏༄  ❥",
-"⇁『youtuber 』‏‏༄  ❥", "⇁『ACTIVE 』‏‏༄  ❥");//Baron#1500
-  if(message.content.startsWith(prefix + "channels")) {
-if(!roles) return message.reply("**من فضلك قم بانشاء الرتب اولا اكتب $roles**")//Baron#1500
-if(roles) {//Baron#1500
-message.reply("**جارى انشاء الرومات**").then((c)=> {//Baron#1500
-setTimeout(() => {
-  c.edit("**تم انشاء الرومات بنجاح**")//Baron#1500
-}, 10000);
-})
-message.guild.createChannel(`${message.guild.name}-TEXT` , 'category').then(tb => {//Baron#1500
-  message.guild.createChannel('welcome' , 'text').then(nws => {
-    nws.setParent(tb);
-    nws.overwritePermissions(message.guild.id, {
-      SEND_MESSAGES: false,
-      MENTION_EVERYONE: false//Baron#1500
-})
-  })
-  message.guild.createChannel('info' , 'text').then(inf => {//Baron#1500
-    inf.setParent(tb);//Baron#1500
-    inf.overwritePermissions(message.guild.id, {//Baron#1500
-      SEND_MESSAGES: false,
-      MENTION_EVERYONE: false//Baron#1500
-})
-  })
-    message.guild.createChannel('news' , 'text').then(nws => {//Baron#1500
-      nws.setParent(tb);
-      nws.overwritePermissions(message.guild.id, {//Baron#1500
-        SEND_MESSAGES: false,
-        MENTION_EVERYONE: false//Baron#1500
-})
-    })//Baron#1500
-      message.guild.createChannel('chat' , 'text').then(cht => {//Baron#1500
-        cht.setParent(tb);
-        cht.overwritePermissions(message.guild.id, {
-          MENTION_EVERYONE: false//Baron#1500
-  })
-      })
-        message.guild.createChannel('bot-commands' , 'text').then(cmd => {//Baron#1500
-          cmd.setParent(tb);
-          cmd.overwritePermissions(message.guild.id, {//Baron#1500
-            MENTION_EVERYONE: false//Baron#1500
-    })
-        })
-          message.guild.createChannel('youtubers' , 'text').then(yt => {//Baron#1500
-            yt.setParent(tb);//Baron#1500
-            yt.overwritePermissions(roleyoutuber, {
-              SEND_MESSAGES: true
-          })
-          yt.overwritePermissions(message.guild.id, {//Baron#1500
-            SEND_MESSAGES: false,
-            MENTION_EVERYONE: false
-          })
-          })//Baron#1500
-          message.guild.createChannel('pic' , 'text').then(pic => {//Baron#1500
-            pic.setParent(tb);
-            pic.overwritePermissions(message.guild.id, {
-              MENTION_EVERYONE: false
-      })
-          })
-            message.guild.createChannel('cut-tweet' , 'text').then(cut => {
-              cut.setParent(tb);
-              cut.overwritePermissions(message.guild.id, {
-                MENTION_EVERYONE: false
-        })//Baron#1500
-            })
-  })
-  message.guild.createChannel(`Games-Chat` , 'category').then(tb => {//Baron#1500
-  message.guild.createChannel('Fortnite' , 'text').then(wlc => {
-    wlc.setParent(tb);
-    wlc.overwritePermissions(message.guild.id, {
-            SEND_MESSAGES: false,
-            MENTION_EVERYONE: false
-  })//Baron#1500
-  wlc.overwritePermissions(rolefortnite, {
-    SEND_MESSAGES: true,
-    MENTION_EVERYONE: false
-})
-  })//Baron#1500
-  message.guild.createChannel('playerunknowns' , 'text').then(ch => {//Baron#1500
-    ch.setParent(tb);
-    ch.overwritePermissions(message.guild.id, {//Baron#1500
-      SEND_MESSAGES: false,
-      MENTION_EVERYONE: false
-})
-ch.overwritePermissions(rolepubg, {//Baron#1500
-  SEND_MESSAGES: true,
-  MENTION_EVERYONE: false//Baron#1500
-})
-  })
-    message.guild.createChannel('counter-strike' , 'text').then(ch => {//Baron#1500
-      ch.setParent(tb);
-      ch.overwritePermissions(message.guild.id, {
-        SEND_MESSAGES: false,//Baron#1500
-        MENTION_EVERYONE: false
-})
-ch.overwritePermissions(rolecsgo, {
-  SEND_MESSAGES: true,
-  MENTION_EVERYONE: false
-})//Baron#1500
-    })
-      message.guild.createChannel('creative-destruction' , 'text').then(ch => {//Baron#1500
-        ch.setParent(tb);
-        ch.overwritePermissions(rolecd, {
-          SEND_MESSAGES: true,//Baron#1500
-          MENTION_EVERYONE: false
-      })
-      ch.overwritePermissions(message.guild.id, {
-        SEND_MESSAGES: false,
-        MENTION_EVERYONE: false
-      })//Baron#1500
-      })
-        message.guild.createChannel('overwatch' , 'text').then(ch => {//Baron#1500
-          ch.setParent(tb);
-          ch.overwritePermissions(roleow, {
-            SEND_MESSAGES: true,//Baron#1500
-            MENTION_EVERYONE: false
-        })
-        ch.overwritePermissions(message.guild.id, {
-          SEND_MESSAGES: false,
-          MENTION_EVERYONE: false
-        })//Baron#1500
-        })
-          message.guild.createChannel('minecraft' , 'text').then(ch => {//Baron#1500
-            ch.setParent(tb);
-            ch.overwritePermissions(rolemc, {
-              SEND_MESSAGES: true,
-              MENTION_EVERYONE: false
-          })
-          ch.overwritePermissions(message.guild.id, {//Baron#1500
-            SEND_MESSAGES: false,
-            MENTION_EVERYONE: false
-          })
-          })//Baron#1500
-          message.guild.createChannel('league-of-legends' , 'text').then(ch => {
-            ch.setParent(tb);//Baron#1500
-            ch.overwritePermissions(rolelol, {
-              SEND_MESSAGES: true,
-              MENTION_EVERYONE: false
-          })//Baron#1500
-          ch.overwritePermissions(message.guild.id, {
-            SEND_MESSAGES: false,
-            MENTION_EVERYONE: false//Baron#1500
-          })
-          })
-  })
-  message.guild.createChannel(`.${message.guild.name} | 🔊 .` , 'category').then(tb => {//Baron#1500
-  message.guild.createChannel('「الـقـرأن الـكـريــم | 📜」' , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.overwritePermissions(message.guild.id, {
-      SPEAK: false//Baron#1500
-})
-message.guild.createChannel('「Events | 🎲 .」' , 'voice').then(ch => {
-  ch.setParent(tb);
-  ch.setUserLimit(50)//Baron#1500
-  ch.overwritePermissions(message.guild.id, {
-    SPEAK: false,
-//Baron#1500
-})
-})
-  })
-})
-message.guild.createChannel(`.Talking | ✋🏽 .` , 'category').then(tb => {
-  message.guild.createChannel(`「${message.guild.name} | 🔊 .」` , 'voice').then(ch => {//Baron#1500
-    ch.setParent(tb);
-    ch.setUserLimit(50)//Baron#1500
-})
-message.guild.createChannel('「Sounds | ♫ .」' , 'voice').then(ch => {//Baron#1500
-  ch.setParent(tb);
-  ch.setUserLimit(50)//Baron#1500
-})
-  })
-  message.guild.createChannel(`» Games | الالعاب .` , 'category').then(tb => {//Baron#1500
-    message.guild.createChannel(`Fortnite | فورتنآيت .` , 'voice').then(ch => {
-      ch.setParent(tb);//Baron#1500
-      ch.overwritePermissions(message.guild.id, {
-        CONNECT: false,
-    
-    })
-    ch.overwritePermissions(rolefortnite, {
-      CONNECT: true,//Baron#1500
+});
+
   
-  })
-  })//Baron#1500
-  message.guild.createChannel('Minecraft | مآينكرآفت' , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.overwritePermissions(message.guild.id, {//Baron#1500
-      CONNECT: false,
-  
-  })
-  ch.overwritePermissions(rolemc, {//Baron#1500
-    CONNECT: true,
-
-})
-  })//Baron#1500
-  message.guild.createChannel(`Creative | كريآتف .` , 'voice').then(ch => {
-    ch.setParent(tb);//Baron#1500
-    ch.overwritePermissions(message.guild.id, {
-      CONNECT: false,
-  
-  })
-  ch.overwritePermissions(rolecd, {
-    CONNECT: true,//Baron#1500
-
-})
-})
-message.guild.createChannel('Legends | لوول' , 'voice').then(ch => {//Baron#1500
-  ch.setParent(tb);
-  ch.overwritePermissions(message.guild.id, {
-    CONNECT: false,
-
-})//Baron#1500
-ch.overwritePermissions(rolelol, {
-  CONNECT: true,//Baron#1500
-
-})
-})
-    })
-  message.guild.createChannel(`» DJ | الموسيقي .` , 'category').then(tb => {//Baron#1500
-    message.guild.createChannel(`» Art.` , 'voice').then(ch => {
-      ch.setParent(tb);
-      ch.setUserLimit(15)//Baron#1500
-  })
-  message.guild.createChannel(`» Fun.` , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.setUserLimit(15)
-})//Baron#1500
-message.guild.createChannel(`» Life.` , 'voice').then(ch => {
-  ch.setParent(tb);
-  ch.setUserLimit(15)//Baron#1500
-})
-message.guild.createChannel(`» Sing.` , 'voice').then(ch => {
-ch.setParent(tb);
-ch.setUserLimit(15)
-})//Baron#1500
-})
-  message.guild.createChannel(`» Privates | خآص .` , 'category').then(tb => {//Baron#1500
-    message.guild.createChannel(`» Single.` , 'voice').then(ch => {
-      ch.setParent(tb);
-      ch.setUserLimit(1)
-  })//Baron#1500
-  message.guild.createChannel('» Doubles.' , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.setUserLimit(2)
-  })//Baron#1500
-  message.guild.createChannel('» Triples.' , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.setUserLimit(3)
-  })//Baron#1500
-  message.guild.createChannel('» Forth.' , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.setUserLimit(4)
-  })//Baron#1500
-  message.guild.createChannel('» Classic.' , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.setUserLimit(10)
-  })//Baron#1500
-  message.guild.createChannel('» Group.' , 'voice').then(ch => {
-    ch.setParent(tb);
-    ch.setUserLimit(15)
-  })
-    })//Baron#1500
- }
+client.on('message', async msg => {
+    if (msg.author.bot) return undefined;
+    if (!msg.content.startsWith(prefix)) return undefined;
+    const args = msg.content.split(' ');
+    const searchString = args.slice(1).join(' ');
+    const url = args[1] ? args[1] .replace(/<(.+)>/g, '$1') : '';
+    const serverQueue = queue.get(msg.guild.id);
+    let command = msg.content.toLowerCase().split(" ")[0];
+    command = command.slice(prefix.length)
+    if (command === `play`) {
+        const voiceChannel = msg.member.voiceChannel;
+        if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
+        const permissions = voiceChannel.permissionsFor(msg.client.user);
+        if (!permissions.has('CONNECT')) {
+            return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
+        }
+        if (!permissions.has('SPEAK')) {
+            return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
+        }
+ 
+        if (!permissions.has('EMBED_LINKS')) {
+            return msg.channel.sendMessage("**يجب توآفر برمشن `EMBED LINKS`لدي **rl")
+            }
+ 
+        if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
+            const playlist = await youtube.getPlaylist(url);
+            const videos = await playlist.getVideos();
+            for (const video of Object.values(videos)) {
+                const video2 = await youtube.getVideoByID(video.id);
+                await handleVideo(video2, msg, voiceChannel, true);
+            }
+            return msg.channel.send(` **${playlist.title}** تم الإضآفة إلى قأئمة التشغيل`);
+        } else {
+            try {
+ 
+                var video = await youtube.getVideo(url);
+ 
+            } catch (error) {
+                try {
+                                            var fast = {};
+                    var videos = await youtube.searchVideos(searchString, 10);
+                    let index = 0;
+                    const embed1 = new Discord.RichEmbed()
+                    .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
+${videos.map(video2 => `[**${++index}**] **${video2.title}**`).join('\n')}`)
+                    .setFooter(`${msg.guild.name}`)
+                    msg.channel.sendEmbed(embed1).then(message =>{
+ 
+                        message.delete(15000)
+ 
+                    });
+                    try {
+                        var response = await msg.channel.awaitMessages(msg2 => msg2.content > 0 && msg2.content < 11, {
+                            maxMatches: 1,
+                            time: 20000,
+                            errors: ['time']
+                        })
+ 
+                        }catch(err) {
+                        console.error(err);
+                        return msg.channel.send('لم يتم إختيآر مقطع صوتي');
+                        }
+                    const videoIndex = parseInt(response.first().content);
+                    var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
+                } catch (err) {
+                    console.error(err);
+                    return msg.channel.send(':x: لا يتوفر نتآئج بحث ');
+                }
+        }
+ 
+            return handleVideo(video, msg, voiceChannel);
+        }
+    } else if (command === `skip`) {
+        if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
+        if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
+        serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
+        return undefined;
+    } else if (command === `stop`) {
+        if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
+        if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لإيقآفه');
+        serverQueue.songs = [];
+        serverQueue.connection.dispatcher.end('تم إيقآف هذآ المقطع');
+        return undefined;
+    } else if (command === `vol`) {
+        if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
+        if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل.');
+        if (!args[1]) return msg.channel.send(`:loud_sound: مستوى الصوت **${serverQueue.volume}**`);
+        serverQueue.volume = args[1];
+        serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
+        return msg.channel.send(`:speaker: تم تغير الصوت الي **${args[1]}**`);
+    } else if (command === `np`) {
+        if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
+        const embedNP = new Discord.RichEmbed()
+    .setDescription(`:notes: الان يتم تشغيل : **${serverQueue.songs[0].title}**`)
+        return msg.channel.sendEmbed(embedNP);
+    } else if (command === `replay`) {
+        if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
+        const embedNP = new Discord.RichEmbed()
+    .setDescription(`سيتم اعاده تشغيل الفديو :**${serverQueue.songs[0].title}**`)
+    msg.channel.send({embed: embedNP})
+     return handleVideo(video, msg, msg.member.voiceChannel);
+ 
+    } else if (command === `queue`) {
+        if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
+        let index = 0;
+        const embedqu = new Discord.RichEmbed()
+.setDescription(`**Songs Queue**
+${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
+**الان يتم تشغيل** ${serverQueue.songs[0].title}`)
+        return msg.channel.sendEmbed(embedqu);
+    } else if (command === `pause`) {
+        if (serverQueue && serverQueue.playing) {
+            serverQueue.playing = false;
+            serverQueue.connection.dispatcher.pause();
+            return msg.channel.send('تم إيقاف الموسيقى مؤقتا!');
+        }
+        return msg.channel.send('لا يوجد شيء حالي ف العمل.');
+    } else if (command === "resume") {
+        if (serverQueue && !serverQueue.playing) {
+            serverQueue.playing = true;
+            serverQueue.connection.dispatcher.resume();
+            return msg.channel.send('استأنفت الموسيقى بالنسبة لك !');
+        }
+        return msg.channel.send('لا يوجد شيء حالي في العمل.');
+    }
+ 
+    return undefined;
+async function handleVideo(video, msg, voiceChannel, playlist = false) {
+    const serverQueue = queue.get(msg.guild.id);
+    const song = {
+        id: video.id,
+        title: Util.escapeMarkdown(video.title),
+        url: `https://www.youtube.com/watch?v=${video.id}`,
+        time:`${video.duration.hours}:${video.duration.minutes}:${video.duration.seconds}`,
+        eyad:`${video.thumbnails.high.url}`,
+        best:`${video.channel.title}`,
+        bees:`${video.raw.snippet.publishedAt}`,
+        shahd:`${video.raw.kind}`,
+        zg:`${video.raw.snippet.channelId}`,
+        views:`${video.raw.views}`,
+        like:`${video.raw.likeCount}`,
+        dislike:`${video.raw.dislikeCount}`,
+        hi:`${video.raw.id}`
+    };
+    if (!serverQueue) {
+        const queueConstruct = {
+            textChannel: msg.channel,
+            voiceChannel: voiceChannel,
+            connection: null,
+            songs: [],
+            volume: 5,
+            playing: true
+        };
+        queue.set(msg.guild.id, queueConstruct);
+        queueConstruct.songs.push(song);
+        try {
+            var connection = await voiceChannel.join();
+            queueConstruct.connection = connection;
+            play(msg.guild, queueConstruct.songs[0]);
+        } catch (error) {
+            console.error(`I could not join the voice channel: ${error}`);
+            queue.delete(msg.guild.id);
+            return msg.channel.send(`لا أستطيع دخول هذآ الروم ${error}`);
+        }
+    } else {
+        serverQueue.songs.push(song);
+        console.log(serverQueue.songs);
+        if (playlist) return undefined;
+        else return msg.channel.send(` **${song.title}** تم اضافه الاغنية الي القائمة!`);
+    }
+    return undefined;
 }
-})//Baron#1500
-Baron.login('process.env.BOT_TOKEN');
+ 
+function play(guild, song) {
+    const serverQueue = queue.get(guild.id);
+ 
+    if (!song) {
+        serverQueue.voiceChannel.leave();
+        queue.delete(guild.id);
+        return;
+    }
+    console.log(serverQueue.songs);
+    const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
+        .on('end', reason => {
+            if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
+            else console.log(reason);
+            serverQueue.songs.shift();
+            play(guild, serverQueue.songs[0]);
+        })
+        .on('error', error => console.error(error));
+    dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+        fetchVideoInfo(`${song.hi}`, function (err,  idk) {
+  if (err) throw new Error(err);
+  console.log( idk);
+      const yyyy = {}
+  if(!yyyy[msg.guild.id]) yyyy[msg.guild.id] = {
+    like: `${ idk.likeCount}`,
+    dislike: `${ idk.dislikeCount}`
+  }
+    serverQueue.textChannel.send({embed : new Discord.RichEmbed()
+  .setTitle(`**${ idk.title}**`)
+  .setURL( idk.url)
+  .addField('Time The Video :' , `${song.time}`, true)
+  .addField('Channel Name :' , `${song.best}`, true)
+  .addField('Channel ID :' , `${song.zg}`, true)
+  .addField('Video Created at :' , `${ idk.datePublished}`, true)
+  .addField('Views :' , `${ idk.views}`, true)
+  .addField('Like👍 :' , `${ idk.likeCount}`, true)
+  .addField('dislike👎 :' , `${ idk.dislikeCount}`, true)
+  .addField('comments :' , `${ idk.commentCount}`, true)
+    .setImage(`${song.eyad}`)
+    .setThumbnail('http://cdn.akhbaar24.com/430e061a-f89a-43c7-86d9-82fae5f7c495.jpg')
+    .setColor('#ff0000')
+    .setTimestamp()
+    }).then(love => {
+        love.react('👍').then(r=>{
+        love.react('👎').then(r =>{
+        love.react('🙌').then(r=> {
+    let likee = (reaction, user) => reaction.emoji.name === '👍' && user.id === msg.author.id;
+    let dislikee = (reaction, user) => reaction.emoji.name === '👎' && user.id === msg.author.id;
+    let cnn = (reaction, user) => reaction.emoji.name === '🙌' && user.id === msg.author.id;
+ 
+    let ll = love.createReactionCollector(likee , {max:5});
+    let dd = love.createReactionCollector(dislikee , {max:5});
+    let cn = love.createReactionCollector(cnn , {max:5});
+ 
+            ll.on("collect", r => {
+              yyyy[msg.guild.id].like++;
+    love.edit({embed : new Discord.RichEmbed()
+  .setTitle(`**${ idk.title}**`)
+  .setURL( idk.url)
+  .addField('Time The Video :' , `${song.time}`, true)
+  .addField('Channel Name :' , `${song.best}`, true)
+  .addField('Channel ID :' , `${song.zg}`, true)
+  .addField('Video Created at :' , `${ idk.datePublished}`, true)
+  .addField('Views :' , `${ idk.views}`, true)
+  .addField('Like👍 :' , `${yyyy[msg.guild.id].like}`, true)
+  .addField('dislike👎 :' , `${ idk.dislikeCount}`, true)
+  .addField('comments :' , `${ idk.commentCount}`, true)
+    .setImage(`${song.eyad}`)
+    .setThumbnail('http://cdn.akhbaar24.com/430e061a-f89a-43c7-86d9-82fae5f7c495.jpg')
+    .setColor('#ff0000')
+    .setTimestamp()
+});
+    })
+ 
+    dd.on("collect", r => {
+      yyyy[msg.guild.id].dislike++;
+    love.edit({embed : new Discord.RichEmbed()
+  .setTitle(`**${ idk.title}**`)
+  .setURL( idk.url)
+  .addField('Time The Video :' , `${song.time}`, true)
+  .addField('Channel Name :' , `${song.best}`, true)
+  .addField('Channel ID :' , `${song.zg}`, true)
+  .addField('Video Created at :' , `${ idk.datePublished}`, true)
+  .addField('Views :' , `${ idk.views}`, true)
+  .addField('Like👍 :' , `${ idk.likeCount}`, true)
+  .addField('dislike👎 :' , `${yyyy[msg.guild.id].dislike}`, true)
+  .addField('comments :' , `${ idk.commentCount}`, true)
+    .setImage(`${song.eyad}`)
+    .setThumbnail('http://cdn.akhbaar24.com/430e061a-f89a-43c7-86d9-82fae5f7c495.jpg')
+    .setColor('#ff0000')
+    .setTimestamp()
+});
+})
+    cn.on("collect", r => {
+    love.edit({embed : new Discord.RichEmbed()
+  .setTitle(`**${ idk.title}**`)
+  .setURL( idk.url)
+  .addField('Time The Video :' , `${song.time}`, true)
+  .addField('Channel Name :' , `${song.best}`, true)
+  .addField('Channel ID :' , `${song.zg}`, true)
+  .addField('Video Created at :' , `${ idk.datePublished}`, true)
+  .addField('Views :' , `${ idk.views}`, true)
+  .addField('Like👍 :' , `${ idk.likeCount}`, true)
+  .addField('dislike👎 :' , `${ idk.dislikeCount}`, true)
+  .addField('comments :' , `${ idk.commentCount}`, true)
+    .setImage(`${song.eyad}`)
+    .setThumbnail('http://cdn.akhbaar24.com/430e061a-f89a-43c7-86d9-82fae5f7c495.jpg')
+    .setColor('#ff0000')
+    .setTimestamp()
+});
+})
+})
+})
+})
+})
+})
+}
+});
+client.login(process.env.BOT_TOKEN);
